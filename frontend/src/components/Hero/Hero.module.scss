@@ -1,0 +1,13 @@
+.hero {
+  padding: 4rem 1rem;
+
+  &__wrapper {
+    height: 100px;
+
+    .content {
+      h1 {
+        font-size: 64px;
+      }
+    }
+  }
+}
