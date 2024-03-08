@@ -57,3 +57,7 @@ input,
 input::placeholder {
   font-family: "Gilroy", sans-serif;
 }
+
+input::placeholder {
+  font-weight: 300;
+}
