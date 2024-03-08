@@ -1,12 +1,29 @@
 .hero {
   padding: 4rem 1rem;
 
-  &__wrapper {
+  .wrapper {
     height: 100px;
 
     .content {
+      text-align: center;
+
       h1 {
         font-size: 64px;
+      }
+
+      p {
+        max-width: 900px;
+        margin: auto;
+        font-weight: 300;
+      }
+
+      a {
+        color: #fff;
+        padding: 10px 20px;
+        background: #000;
+        display: inline-block;
+        margin-top: 0.6rem;
+        font-weight: 300;
       }
     }
   }

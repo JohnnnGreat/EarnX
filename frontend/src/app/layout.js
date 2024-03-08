@@ -1,5 +1,6 @@
 import Header from "@/components/Header/Header";
 import "./globals.css";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 export const metadata = {
   title: "Create Next App",
@@ -9,10 +10,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <div>
-        <Header />
-        <body>{children}</body>
-      </div>
+      <GoogleOAuthProvider clientId="399902958239-82hndr809hb3s2v59qo5ti0mgl849iun.apps.googleusercontent.com">
+        <body>
+          <Header />
+          <div>{children}</div>
+        </body>
+      </GoogleOAuthProvider>
     </html>
   );
 }

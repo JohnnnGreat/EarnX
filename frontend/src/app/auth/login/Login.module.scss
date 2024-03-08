@@ -1,0 +1,25 @@
+.loginContainer {
+  height: 100vh;
+  padding: 1rem;
+
+  .loginGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      h1 {
+        font-size: 40px;
+      }
+    }
+  }
+}
+
+.btnLogin {
+  width: 100%;
+  background: #000;
+  color: #333;
+  
+}
