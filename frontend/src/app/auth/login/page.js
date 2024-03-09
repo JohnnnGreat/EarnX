@@ -5,13 +5,11 @@ import React, { useState } from "react";
 import styles from "../Auth.module.scss";
 import { useDispatch } from "react-redux";
 import { login } from "@/actions/auth";
-import { useSnackbar } from "react-simple-snackbar";
 
 const page = () => {
   const dispatch = useDispatch();
   // const [openSnackbar, closeSnackbar] = useSnackbar();
   const [data, setData] = useState({ email: "", password: "" });
-  const [error, setErrorMessage] = useState("");
   const [formValid, setFormValid] = useState(false);
 
   const handleEmail = (e) => {
@@ -53,29 +51,28 @@ const page = () => {
       console.log("Password can only be 8 characters long");
     }
     dispatch(login(data));
-
-    return (
-      <div className={styles.Container}>
-        <div className={styles.Grid}>
-          <div>
-            <form>
-              <h1>Login</h1>
-              <Field placeholder={"Email"} type="text" handler={handleEmail} />
-              <Field
-                placeholder={"Password"}
-                type="text"
-                handler={handlePassword}
-              />
-              <button onClick={handleSubmit} className={styles.btnLogin}>
-                Login
-              </button>
-            </form>
-          </div>
-          <div></div>
-        </div>
-        <div className={styles.secondSection}></div>
-      </div>
-    );
   };
+  return (
+    <div className={styles.Container}>
+      <div className={styles.Grid}>
+        <div>
+          <form>
+            <h1>Login</h1>
+            <Field placeholder={"Email"} type="text" handler={handleEmail} />
+            <Field
+              placeholder={"Password"}
+              type="text"
+              handler={handlePassword}
+            />
+            <button onClick={handleSubmit} className={styles.btnLogin}>
+              Login
+            </button>
+          </form>
+        </div>
+        <div></div>
+      </div>
+      <div className={styles.secondSection}></div>
+    </div>
+  );
 };
 export default page;

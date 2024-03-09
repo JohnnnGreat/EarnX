@@ -5,7 +5,7 @@ export const LOGIN_FAILURE = "LOGIN_FAILURE";
 
 export const login = (data) => {
   return async (dispatch) => {
-    /*try {
+      try {
       const response = await axios.post("/", data);
       if (response.success) {
         dispatch({
@@ -21,6 +21,6 @@ export const login = (data) => {
       }
     } catch (error) {
       dispatch({ type: LOGIN_FAILURE, status: response.data.data.message });
-    }*/
+    }
   };
 };
