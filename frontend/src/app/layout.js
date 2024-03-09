@@ -8,7 +8,6 @@ import reducers from "@/reducers";
 import { Provider } from "react-redux";
 import { thunk } from "redux-thunk";
 import { usePathname } from "next/navigation";
-import DashboardHeader from "./dashboard/DashboardHeader";
 
 export default function RootLayout({ children }) {
   const router = usePathname();
@@ -18,10 +17,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Provider store={store}>
+        {/* <GoogleOAuthProvider clientId="399902958239-82hndr809hb3s2v59qo5ti0mgl849iun.apps.googleusercontent.com"> */}
         <body>
-          <Header />
+          {isDashboardRoute ? null : <Header />}
           <div>{children}</div>
         </body>
+        {/* </GoogleOAuthProvider> */}
       </Provider>
     </html>
   );

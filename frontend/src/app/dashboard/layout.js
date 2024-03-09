@@ -5,10 +5,12 @@ import SideNav from "@/components/Dashboard/Home/SideNav";
 const layout = ({ children }) => {
   return (
     <div className={styles.dashboard}>
-      <div className={styles.header}></div>
       <div className={styles.dashboardGrid}>
-        <SideNav />
-        <div>{children}</div>
+        <div className={styles.sectionOne}>
+          <SideNav />
+        </div>
+
+        <div className={styles.sectionTwo}>{children}</div>
       </div>
     </div>
   );
