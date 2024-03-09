@@ -8,6 +8,8 @@ const jwt = require("jsonwebtoken");
  * @param {object} res - The response object.
  * @returns {object} JSON response indicating the login status.
  */
+
+const JSONSECRET = "12345";
 const Login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -29,18 +31,17 @@ const Login = async (req, res) => {
         .status(404)
         .json({ message: "Password Not Correct", success: false });
 
-    const token = jwt.sign(
-      { email: existingUser.email },
-      process.env.JSONSECRET,
-      { expiresIn: "2hr" }
-    );
+    const token = jwt.sign({ email: existingUser.email }, JSONSECRET, {
+      expiresIn: "2hr",
+    });
 
     res.status(200).json({
       message: "Logged in Succesfully",
       success: true,
-      payload: { ...existingUser, token },
+      payload: { ...existingUser._doc, token },
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "An Error Occured", success: false });
   }
 };
@@ -54,6 +55,7 @@ const Login = async (req, res) => {
 
 const Register = async (req, res) => {
   const { email, password } = req.body;
+  console.log(req.body);
   try {
     /* Check if User ALready Exist */
     const user = await Auth.findOne({ email: email });

@@ -5,10 +5,13 @@ import React, { useState } from "react";
 import styles from "../Auth.module.scss";
 import { useDispatch } from "react-redux";
 import { login } from "@/actions/auth";
+import { message } from "antd";
+import ImagePattern from "@/components/ImagePattern";
+import Link from "next/link";
 
 const page = () => {
   const dispatch = useDispatch();
-  // const [openSnackbar, closeSnackbar] = useSnackbar();
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({ email: "", password: "" });
   const [formValid, setFormValid] = useState(false);
 
@@ -24,6 +27,7 @@ const page = () => {
   };
 
   const handleSubmit = (e) => {
+    setIsLoading(true);
     e.preventDefault();
 
     const { email, password } = data;
@@ -50,12 +54,16 @@ const page = () => {
     } else {
       console.log("Password can only be 8 characters long");
     }
-    dispatch(login(data));
+    dispatch(login(data, message));
+    setIsLoading(false);
   };
   return (
     <div className={styles.Container}>
       <div className={styles.Grid}>
-        <div>
+        <div className={styles.firstSection}>
+          <Link className={styles.registerLink} href={"/auth/register"}>
+            Register
+          </Link>
           <form>
             <h1>Login</h1>
             <Field placeholder={"Email"} type="text" handler={handleEmail} />
@@ -64,14 +72,18 @@ const page = () => {
               type="text"
               handler={handlePassword}
             />
-            <button onClick={handleSubmit} className={styles.btnLogin}>
-              Login
+            <button
+              onClick={handleSubmit}
+              className={isLoading ? styles.LoadingStyles : styles.btnLogin}
+            >
+              {isLoading ? "Loading" : "Login"}
             </button>
           </form>
         </div>
-        <div></div>
+        <div className={styles.secondSection}>
+          <ImagePattern />
+        </div>
       </div>
-      <div className={styles.secondSection}></div>
     </div>
   );
 };

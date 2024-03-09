@@ -1,18 +1,19 @@
 .Container {
-  height: 80vh;
-  padding: 1rem;
+  height: calc(100vh - 100px);
 
   .Grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     height: 100%;
-    div {
+
+    .firstSection {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
       height: 100%;
+      position: relative;
     }
     form {
       display: flex;
@@ -34,4 +35,26 @@
   padding: 10px 16px;
   font-weight: 300;
   margin-top: 1rem;
+}
+.loadingStyles {
+  opacity: 0.5;
+  width: 100%;
+  color: #f0f0f0;
+  background: #000;
+  border-radius: 5px;
+  padding: 10px 16px;
+  font-weight: 300;
+  margin-top: 1rem;
+}
+.registerLink {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border-bottom: 1px solid #000;
+  padding: 0.3rem 0;
+}
+
+.secondSection {
+  height: 100% !important;
+  overflow: hidden;
 }
