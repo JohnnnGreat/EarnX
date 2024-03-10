@@ -61,7 +61,8 @@ img {
   height: 100%;
 }
 
-h1 {
+h1,
+label {
   font-family: "Syne", sans-serif;
 }
 p,

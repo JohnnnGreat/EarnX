@@ -20,7 +20,9 @@ const SideNav = () => {
             {Dashboard.map((item) => (
               <li key={item.id}>
                 <Link
-                  className={router === item.path ? styles.activeLink : ""}
+                  className={
+                    router.startsWith(item.path) ? styles.activeLink : ""
+                  }
                   href={item.path}
                 >
                   {item.text}

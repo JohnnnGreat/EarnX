@@ -5,14 +5,15 @@
   width: 100%;
 
   .dashboardGrid {
-    display: flex;
-
+    display: grid;
+    grid-template-columns: 20% 80%;
     .sectionOne {
-      flex-grow: 1;
+      // flex-grow: 2;
     }
 
     .sectionTwo {
-      flex-grow: 7;
+      // flex-grow: 7;
+      overflow: auto;
     }
   }
 }
@@ -34,4 +35,155 @@
       }
     }
   }
+}
+
+//Product
+
+.secHeader {
+  height: 180px;
+
+  padding: 0.5rem;
+
+  .secWrapper {
+    max-width: 90%;
+    margin: auto;
+    h1 {
+      font-size: 48px;
+    }
+
+    .secGrid {
+      margin-top: 1rem;
+      ul {
+        display: flex;
+        align-items: center;
+
+        gap: 1rem;
+        li {
+          button {
+            padding: 0.5rem 1rem;
+            border: 1px solid #000;
+            border-radius: 20px;
+            transition: 300ms ease-in;
+
+            &:hover {
+              background-color: #000;
+              color: #fff;
+              transition: 300ms ease;
+            }
+          }
+        }
+      }
+    }
+    .AddProduct {
+      background: #000;
+      display: inline-block;
+      color: #fff;
+      padding: 0.8rem 1rem;
+      border-radius: 15px;
+      margin-top: 1rem;
+    }
+
+    .Products {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      border: 1px dotted gray;
+      padding: 1rem;
+      margin-top: 1rem;
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+// Product Display
+.EmptyProduct {
+  width: 500px;
+}
+
+.secHeaderContainer {
+  border-bottom: 1px solid rgb(201, 199, 199);
+  padding: 2rem 0;
+}
+
+//New Styling
+
+.newHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(206, 205, 205);
+  padding: 1rem 0;
+
+  div {
+    display: flex;
+    gap: 1rem;
+    a {
+      display: inline-block;
+      border: 1px solid #000;
+      padding: 0.6rem 1rem;
+    }
+
+    button {
+      background: #000;
+      color: #ffff;
+      padding: 0.6rem 1rem;
+    }
+  }
+}
+
+.newProducts {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  padding: 2rem 0;
+  gap: 2rem;
+  .newText {
+  }
+
+  .productChoice {
+    form {
+      width: 100%;
+      label {
+        display: block;
+        margin-top: 1rem;
+      }
+
+      input {
+        border: 1px solid rgb(168, 168, 168);
+        padding: 0.9rem;
+        width: 100%;
+      }
+    }
+
+    .TypeText {
+      font-size: 20px;
+      margin-top: 1.4rem;
+    }
+
+    .TypeDetails {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+
+      .TypeItem {
+        border: 1px solid rgb(206, 206, 206);
+        padding: 1rem;
+        cursor: pointer;
+        transition: 300ms ease;
+        h1 {
+          font-size: 24px;
+          line-height: 1;
+        }
+      }
+    }
+  }
+}
+.selectedType {
+  border: 1px solid #000 !important;
+  transition: 300ms ease;
 }
