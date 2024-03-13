@@ -1,7 +1,7 @@
 const Auth = require("../Models/Auth");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+const Profile = require("../Models/Profile");
 /**
  * Handles user login.
  * @param {object} req - The request object.
@@ -72,8 +72,15 @@ const Register = async (req, res) => {
       password: hashedPassword,
     });
 
+    // Create User Profile
+    const profileResult = await Profile.create({
+      email,
+      name: email,
+    });
+
     res.status(201).json({ message: "Registered Successfully", success: true });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "An Error Occured", success: false });
   }
 };

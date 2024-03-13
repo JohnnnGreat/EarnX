@@ -29,18 +29,18 @@ export const Types = [
     text: "Offer a book or comic in PDF, ePub, and Mobi formats.",
   },
   {
-    id: 1,
+    id: 4,
     Title: "Digital product",
     text: "Any set of files to download or stream.",
   },
 
   {
-    id: 2,
+    id: 5,
     Title: "Course or tutorial",
     text: "Sell a single lesson or teach a whole cohort of students.",
   },
   {
-    id: 3,
+    id: 6,
     Title: "E-book",
     text: "Offer a book or comic in PDF, ePub, and Mobi formats.",
   },

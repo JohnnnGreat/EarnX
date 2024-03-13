@@ -25,6 +25,7 @@ export const login = (data, message) => {
         });
         message.success("Login Succesfully");
         localStorage.setItem("token", response?.data?.payload?.token);
+        localStorage.setItem("id", response?.data?.payload?._id);
         window.location.href = "/dashboard";
       } else {
         dispatch({

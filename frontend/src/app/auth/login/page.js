@@ -64,6 +64,7 @@ const page = () => {
           <Link className={styles.registerLink} href={"/auth/register"}>
             Register
           </Link>
+
           <form>
             <h1>Login</h1>
             <Field placeholder={"Email"} type="text" handler={handleEmail} />

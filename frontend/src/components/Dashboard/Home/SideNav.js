@@ -21,7 +21,7 @@ const SideNav = () => {
               <li key={item.id}>
                 <Link
                   className={
-                    router.startsWith(item.path) ? styles.activeLink : ""
+                    router.includes(item.path) ? styles.activeLink : ""
                   }
                   href={item.path}
                 >
