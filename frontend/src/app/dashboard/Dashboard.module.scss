@@ -119,6 +119,7 @@
   align-items: center;
   border-bottom: 1px solid rgb(206, 205, 205);
   padding: 1rem 0;
+  height: 200px;
 
   div {
     display: flex;
@@ -134,6 +135,10 @@
       color: #ffff;
       padding: 0.6rem 1rem;
     }
+  }
+
+  h1 {
+    font-size: 60px;
   }
 }
 
@@ -191,4 +196,36 @@
 
 .disableAddingProductBtn {
   opacity: 0.5;
+}
+
+// Edit Page Styling
+
+.edit {
+  padding: 1rem;
+}
+
+.editContainer {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 1rem;
+
+  padding: 1rem;
+
+  .mainEdit {
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+      input {
+        width: 100%;
+        padding: 0.7rem;
+        outline: none;
+        border: 1px solid rgb(199, 199, 199);
+        border-radius: 10px;
+        &:focus {
+          border: 1px solid #000;
+        }
+      }
+    }
+  }
 }

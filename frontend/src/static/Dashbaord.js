@@ -4,7 +4,10 @@ export const Dashboard = [
   { id: 3, text: "Collaborators", path: "/dashboard/collaborators" },
   { id: 4, text: "Checkout", path: "/dashboard/checkout" },
   { id: 5, text: "Emails", path: "/dashboard/emails" },
-  { id: 6, text: "Workflows", path: "/dashboard/Workflows" },
+  { id: 6, text: "Workflows", path: "/dashboard/workflows" },
+  { id: 7, text: "Sales", path: "/dashboard/sales" },
+  { id: 8, text: "Analytics", path: "/dashboard/analytics" },
+  { id: 9, text: "Payouts", path: "/dashboard/payouts" },
 ];
 
 // export const ProductGrid = [
@@ -46,5 +49,8 @@ export const Types = [
   },
 ];
 
-
-export const actionDetails = ['Delete Product', 'Duplicate Product', 'Archive Product']
+export const actionDetails = [
+  "Delete Product",
+  "Duplicate Product",
+  "Archive Product",
+];

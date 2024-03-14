@@ -26,12 +26,14 @@ const AddProduct = async (req, res) => {
 
 const GetAllProducts = async (req, res) => {
   try {
-    const products = await ProductModel.find().populate([
-      {
-        path: "user",
-        select: ["email"],
-      },
-    ]);
+    const products = await ProductModel.find()
+      .sort({ _id: -1 })
+      .populate([
+        {
+          path: "user",
+          select: ["email"],
+        },
+      ]);
 
     const filteredProducts = products.filter((item) => {
       return item.user._id.toString() === req.params.id;
