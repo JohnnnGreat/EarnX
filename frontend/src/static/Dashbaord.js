@@ -45,3 +45,6 @@ export const Types = [
     text: "Offer a book or comic in PDF, ePub, and Mobi formats.",
   },
 ];
+
+
+export const actionDetails = ['Delete Product', 'Duplicate Product', 'Archive Product']

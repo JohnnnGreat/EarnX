@@ -25,7 +25,6 @@ const AddProduct = async (req, res) => {
 };
 
 const GetAllProducts = async (req, res) => {
-  console.log(req.params);
   try {
     const products = await ProductModel.find().populate([
       {
@@ -38,19 +37,36 @@ const GetAllProducts = async (req, res) => {
       return item.user._id.toString() === req.params.id;
     });
 
-    res
-      .status(200)
-      .json({
-        message: "products Fetched Successfully",
-        products,
-        success: true,
-      });
+    res.status(200).json({
+      message: "products Fetched Successfully",
+      products: filteredProducts,
+      success: true,
+    });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({ message: error.message, success: false });
   }
 };
 
+const GetProductDetails = async (req, res) => {
+  console.log(req.params);
+  try {
+    const product = await ProductModel.findOne({ _id: req.params.id });
+    if (!product) {
+      throw new Error("Product Not Found");
+    }
+    console.log(product);
+    res.status(200).json({
+      message: "Product Fetched Successfully",
+      success: true,
+      product,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: error.message, success: false });
+  }
+};
 module.exports = {
   AddProduct,
   GetAllProducts,
+  GetProductDetails,
 };

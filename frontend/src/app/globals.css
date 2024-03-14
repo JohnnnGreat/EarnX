@@ -69,10 +69,29 @@ p,
 a,
 button,
 input,
-input::placeholder {
+input::placeholder,
+table,
+th,
+td {
   font-family: "Gilroy", sans-serif;
 }
 
 input::placeholder {
   font-weight: 300;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 2rem;
+  border-radius: 15px;
+}
+th,
+td {
+  border: 1px solid #d3d3d3;
+  text-align: left;
+  padding: 8px;
+}
+th {
+  background-color: #fdfdfd;
 }

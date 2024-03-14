@@ -9,45 +9,32 @@ import useSWR from "swr";
 import API from "@/app/utils/api";
 import { getID } from "@/actions/product";
 import { message } from "antd";
+import { actionDetails } from "@/static/Dashbaord";
+import Table from "@/components/Dashboard/Products/Table";
 
 const Product = () => {
-  // const myState = useSelector((state) => console.log(state));
-
-  /* const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data, error } = useSWR(
-    "http://localhost:3030/product/getallproducts",
-    fetcher
-  ); */
   const [products, setProducts] = useState([]);
+  // const [userId, setUserId] = useState(getID());
   useEffect(() => {
-    if (window.localStorage) {
-      if (localStorage.getItem("products")) {
-        setProducts(JSON.parse(localStorage.getItem("products")));
-      } else {
-        const id = getID();
-        getProducts(id);
-      }
-    } else {
-      const id = getID();
-      getProducts(id);
-    }
     const getProducts = async (userId) => {
       try {
         const response = await API.get(`/product/getallproducts/${userId}`);
-        console.log(response);
         const { data } = response;
-
-        console.log(data);
 
         if (data.success) {
           message.success(data.message);
-
+          setProducts(data?.products);
           localStorage.setItem("products", JSON.stringify(data.products));
         }
       } catch (error) {
-        console.log(error);
+        message.error(error.message);
       }
     };
+
+    if (window !== undefined) {
+      const id = localStorage.getItem("id");
+      getProducts(id);
+    }
   }, []);
 
   return (
@@ -89,13 +76,7 @@ const Product = () => {
             </div>
           </div>
         ) : (
-          <div>
-            {products.map((product) => (
-              <div>
-                <h1>{product.name}</h1>
-              </div>
-            ))}
-          </div>
+          <Table products={products} action={actionDetails} />
         )}
       </div>
     </div>

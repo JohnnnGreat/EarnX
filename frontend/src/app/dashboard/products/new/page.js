@@ -5,8 +5,10 @@ import Image from "next/image";
 import styles from "../../Dashboard.module.scss";
 import { Types } from "@/static/Dashbaord";
 import { message } from "antd";
-import { addProduct } from "@/actions/product";
+import { addProduct, getID } from "@/actions/product";
 import { useDispatch } from "react-redux";
+import API from "@/app/utils/api";
+import { useRouter } from "next/navigation";
 
 const New = () => {
   const [selectedType, setSelectedType] = useState("");
@@ -17,6 +19,9 @@ const New = () => {
     price: "",
     duration: "",
   });
+
+  const router = useRouter();
+  const [userId, setUserId] = useState(getID());
 
   const dispatch = useDispatch();
 
@@ -36,10 +41,22 @@ const New = () => {
     setProduct({ ...product, duration: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(product);
-    dispatch(addProduct(product, message, setIsAddingProduct));
+
+    // dispatch(addProduct(product, message, setIsAddingProduct));
+
+    try {
+      const response = await API.post("/product/add", {
+        ...product,
+        _id: userId,
+      });
+      console.log(response);
+      const { data } = response;
+      router.push(`/dashboard/products/${data.product._id}/edit`);
+    } catch (error) {
+      message.error(error.message);
+    }
   };
 
   const handleSelectedType = (title) => {
