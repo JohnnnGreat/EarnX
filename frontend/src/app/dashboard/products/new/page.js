@@ -45,17 +45,22 @@ const New = () => {
     e.preventDefault();
 
     // dispatch(addProduct(product, message, setIsAddingProduct));
-
-    try {
-      const response = await API.post("/product/add", {
-        ...product,
-        _id: userId,
-      });
-      console.log(response);
-      const { data } = response;
-      router.push(`/dashboard/products/${data.product._id}/edit`);
-    } catch (error) {
-      message.error(error.message);
+    if (!product.name | !product.type | !product.duration | !product.price) {
+      message.error("An error had occured with input values");
+      console.log(product);
+      // console.log("An error had occured with input values");
+    } else {
+      try {
+        const response = await API.post("/product/add", {
+          ...product,
+          _id: userId,
+        });
+        console.log(response);
+        const { data } = response;
+        router.push(`/dashboard/products/${data.product._id}/edit`);
+      } catch (error) {
+        message.error(error.message);
+      }
     }
   };
 

@@ -41,7 +41,16 @@ const Product = () => {
     <div className={styles.secHeader}>
       <div className={styles.secWrapper}>
         <div className={styles.secHeaderContainer}>
-          <h1>Products</h1>
+          <div className={styles.headerLink}>
+            <h1>Products</h1>
+            <Link
+              className={styles.AddProduct}
+              href={"/dashboard/products/new"}
+            >
+              Add a New Product
+            </Link>
+          </div>
+
           <div className={styles.secGrid}>
             <ul>
               <li>
@@ -53,10 +62,6 @@ const Product = () => {
             </ul>
           </div>
         </div>
-
-        <Link className={styles.AddProduct} href={"/dashboard/products/new"}>
-          Add a New Product
-        </Link>
 
         {products.length === 0 ? (
           <div className={styles.Products}>

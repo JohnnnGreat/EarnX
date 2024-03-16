@@ -54,3 +54,12 @@ export const actionDetails = [
   "Duplicate Product",
   "Archive Product",
 ];
+
+export const gettingStarted = [
+  "Customized your profile",
+  "Created your first product",
+  "Get your first follower",
+  "Make your first sale",
+  "Get your first payout",
+  "Send out your first email blast",
+];

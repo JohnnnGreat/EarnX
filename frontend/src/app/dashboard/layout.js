@@ -10,7 +10,9 @@ const layout = ({ children }) => {
           <SideNav />
         </div>
 
-        <div className={styles.sectionTwo}>{children}</div>
+        <div className={styles.sectionTwo}>
+          <div className={styles.sectionTwoWrapper}>{children}</div>
+        </div>
       </div>
     </div>
   );

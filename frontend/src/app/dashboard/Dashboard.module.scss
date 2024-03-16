@@ -1,19 +1,25 @@
 .dashboard {
-  height: 100%;
+  height: 100vh;
   position: fixed;
   top: 0;
   width: 100%;
+  bottom: 0;
 
   .dashboardGrid {
     display: grid;
     grid-template-columns: 20% 80%;
+    height: 100%;
     .sectionOne {
       // flex-grow: 2;
     }
 
     .sectionTwo {
+      height: 100vh;
       // flex-grow: 7;
-      overflow: auto;
+      .sectionTwoWrapper {
+        height: 100%;
+        overflow-x: auto;
+      }
     }
   }
 }
@@ -21,14 +27,13 @@
 // Home Section
 
 .Home {
-  height: 100%;
+  // overflow: scrokll;
 
   .HomeWrapper {
     padding: 1rem;
-
     .HomeHeader {
       height: 100px;
-      border-bottom: 1px solid gray;
+      border-bottom: 1px solid rgb(211, 211, 211);
 
       h1 {
         font-size: 48px;
@@ -40,8 +45,6 @@
 //Product
 
 .secHeader {
-  height: 180px;
-
   padding: 0.5rem;
 
   .secWrapper {
@@ -109,6 +112,12 @@
 .secHeaderContainer {
   border-bottom: 1px solid rgb(201, 199, 199);
   padding: 2rem 0;
+
+  .headerLink {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
 }
 
 //New Styling
@@ -120,6 +129,10 @@
   border-bottom: 1px solid rgb(206, 205, 205);
   padding: 1rem 0;
   height: 200px;
+
+  @media (max-width: 800px) {
+    flex-wrap: wrap;
+  }
 
   div {
     display: flex;
@@ -139,6 +152,9 @@
 
   h1 {
     font-size: 60px;
+    @media (max-width: 800px) {
+      font-size: 25px;
+    }
   }
 }
 
@@ -147,6 +163,10 @@
   grid-template-columns: 40% 60%;
   padding: 2rem 0;
   gap: 2rem;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
   .newText {
   }
 
@@ -163,6 +183,7 @@
         border: 1px solid rgb(168, 168, 168);
         padding: 0.9rem;
         width: 100%;
+        outline: none;
       }
     }
 
@@ -226,6 +247,153 @@
           border: 1px solid #000;
         }
       }
+    }
+  }
+}
+
+.pricing {
+  width: 100%;
+
+  .pricingText {
+    font-size: 20px;
+  }
+
+  .pricingInput {
+    display: flex;
+    border: 1px solid rgb(209, 209, 209);
+    padding: 0.9rem;
+    border-radius: 10px;
+    align-items: center;
+    gap: 0.8rem;
+    h1 {
+      border: 1px solid gray;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    input {
+      border: none;
+      outline: none;
+    }
+  }
+}
+
+.checkBoxOption {
+  form {
+    input {
+      display: none;
+    }
+    cursor: pointer;
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+.checkBoxContainer {
+  width: 45px;
+  height: 25px;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+
+  .checkBoxCircle {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    margin-left: 0.1rem;
+  }
+}
+
+.openPricingModal {
+  transform: translateY(40px);
+}
+
+// Home page
+.gettingStarted {
+  padding: 1rem;
+
+  .pageHeader {
+    font-size: 35px;
+    margin: 1rem 0;
+  }
+
+  .gettingStartedContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-collapse: collapse;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 10px;
+
+    .gettingStartedItem {
+      padding: 0.8rem;
+      display: flex;
+      gap: 0.7rem;
+      align-items: center;
+
+      .checkCircle {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 1.5px solid #000;
+      }
+
+      h1 {
+        font-size: 16px;
+        text-decoration: underline;
+      }
+
+      &:first-child,
+      &:nth-child(3),
+      &:nth-child(5) {
+        border-right: 1px solid rgb(211, 211, 211);
+      }
+
+      &:first-child,
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        border-bottom: 1px solid rgb(211, 211, 211);
+      }
+    }
+  }
+}
+
+.bestSelling {
+  padding: 1rem;
+
+  .bestSellingHeader {
+    font-size: 35px;
+    margin: 1rem 0;
+  }
+}
+
+.activity {
+  padding: 1rem;
+
+  .activityHeader {
+    font-size: 35px;
+    margin: 1rem 0;
+  }
+}
+
+.bestSelling,
+.activity {
+  div {
+    width: 100%;
+    padding: 1.7rem;
+    background-color: rgb(245, 245, 245);
+    border: 1px dashed rgb(199, 199, 199);
+    border-radius: 10px;
+
+    p {
+      text-align: center;
     }
   }
 }
