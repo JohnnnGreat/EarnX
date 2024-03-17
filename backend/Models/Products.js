@@ -37,8 +37,9 @@ const productSchema = mongoose.Schema({
   },
 
   user: {
-    type: mongoose.Schema.Types.ObjectId, ref:"Auth"
-  }
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Auth",
+  },
 });
 
 const ProductModel = mongoose.model("Product", productSchema);

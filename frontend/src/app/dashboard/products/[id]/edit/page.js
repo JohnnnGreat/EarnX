@@ -19,6 +19,7 @@ const EditPage = () => {
   const [value, setValue] = useState("");
   const [price, setPrice] = useState(0);
   const [showImageOption, setShowImageOption] = useState(false);
+  const [updatedProduct, setUpdatedProduct] = useState(null);
 
   useEffect(() => {
     const getProduct = async (productId) => {
@@ -27,6 +28,7 @@ const EditPage = () => {
           `/product/getproductdetails/${productId}`
         );
         const { data } = response;
+        console.log(data);
         if (data.success) {
           setProduct(data.product);
         }
@@ -47,6 +49,13 @@ const EditPage = () => {
   const handlePriceChange = (e) => {
     setPrice(e.target.value);
   };
+
+  const handleText = (e) => {
+    setUpdatedProduct({ ...updatedProduct, name: e.target.value });
+  };
+  const handleSaveSubmit = (e) => {
+    setUpdatedProduct({ ...updatedProduct, price: price });
+  };
   return (
     <div className={styles.edit}>
       <div className={styles.editWrapper}>
@@ -66,7 +75,12 @@ const EditPage = () => {
           <div className={styles.mainEdit}>
             <form action="">
               <label htmlFor="">Name</label>
-              <input type="text" value={text} placeholder="Product Name" />
+              <input
+                type="text"
+                value={text}
+                onChange={handleText}
+                placeholder="Product Name"
+              />
             </form>
 
             <div className={styles.richText}>
@@ -164,6 +178,10 @@ const EditPage = () => {
                 <div>
                   <h1 className={styles.tag}>Price</h1>
                   <h1 className={styles.value}>{price}</h1>
+                </div>
+                <div>
+                  <h1 className={styles.tag}>User</h1>
+                  <h1 className={styles.value}>{product?.user?.email}</h1>
                 </div>
               </div>
             </div>

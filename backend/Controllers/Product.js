@@ -39,6 +39,7 @@ const GetAllProducts = async (req, res) => {
       return item.user._id.toString() === req.params.id;
     });
 
+    console.log(filteredProducts);
     res.status(200).json({
       message: "products Fetched Successfully",
       products: filteredProducts,
@@ -52,7 +53,9 @@ const GetAllProducts = async (req, res) => {
 const GetProductDetails = async (req, res) => {
   console.log(req.params);
   try {
-    const product = await ProductModel.findOne({ _id: req.params.id });
+    const product = await ProductModel.findOne({ _id: req.params.id }).populate(
+      { path: "user", select: "email" }
+    );
     if (!product) {
       throw new Error("Product Not Found");
     }
