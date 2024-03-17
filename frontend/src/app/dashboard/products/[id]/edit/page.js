@@ -7,6 +7,7 @@ import Link from "next/link";
 import InputPrice from "@/components/Dashboard/Product/InputPrice";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { getID } from "@/actions/product";
 
 const EditPage = () => {
   const params = usePathname();
@@ -20,6 +21,8 @@ const EditPage = () => {
   const [price, setPrice] = useState(0);
   const [showImageOption, setShowImageOption] = useState(false);
   const [updatedProduct, setUpdatedProduct] = useState(null);
+  const [file, setFile] = useState({});
+  const [userId, setUserId] = useState(getID());
 
   useEffect(() => {
     const getProduct = async (productId) => {
@@ -48,13 +51,33 @@ const EditPage = () => {
 
   const handlePriceChange = (e) => {
     setPrice(e.target.value);
+    setUpdatedProduct({ ...updatedProduct, price: e.target.value });
   };
 
   const handleText = (e) => {
     setUpdatedProduct({ ...updatedProduct, name: e.target.value });
   };
   const handleSaveSubmit = (e) => {
-    setUpdatedProduct({ ...updatedProduct, price: price });
+    // setUpdatedProduct({ ...updatedProduct, price: price });
+
+    console.log(updatedProduct);
+    console.log(file);
+  };
+
+  const handleFile = async (e) => {
+    setFile(e.target.files[0]);
+    const formData = new FormData();
+    // setFileName(e.target.files[0].name);
+    formData.append("image", e.target.files[0]);
+
+    try {
+      const response = await API.put(
+        `/productdetails/updateproductcover/${userId}`
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   return (
     <div className={styles.edit}>
@@ -65,7 +88,7 @@ const EditPage = () => {
             <Link href={"/dashboard/products"}>Cancel</Link>
             <button
               //   className={`${isAddingProduct && styles.disableAddingProductBtn}`}
-              onClick={handleSave}
+              onClick={handleSaveSubmit}
             >
               Save and Continue
             </button>
@@ -118,7 +141,12 @@ const EditPage = () => {
                 ) : (
                   <div className={styles.imageOptions}>
                     <label htmlFor="image">Computer Files</label>
-                    <input type="file" id="image" />
+                    <input
+                      type="file"
+                      id="image"
+                      onChange={handleFile}
+                      accept="image/*"
+                    />
                     <button>External Link</button>
                   </div>
                 )}

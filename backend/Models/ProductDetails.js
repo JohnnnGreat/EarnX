@@ -15,7 +15,11 @@ const ProductDetailsSchema = mongoose.Schema({
   allowCustomerPayChoices: { type: Boolean },
   version: { type: String },
   limitProductSales: { type: Boolean },
+  productId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Product",
+  },
 });
 
 const ProductDetails = mongoose.model("ProductDetails", ProductDetailsSchema);
-module.export = ProductDetails
+module.exports = ProductDetails;
