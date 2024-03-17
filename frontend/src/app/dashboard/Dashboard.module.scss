@@ -252,8 +252,10 @@
 }
 
 .productInfoText,
-.pricingText .coverText {
-  margin-top: 1rem;
+.pricingText .coverText,
+.richTextText {
+  margin-top: 1rem !important;
+  margin-bottom: 0.9rem !important;
 }
 .coverContainer {
   height: 200px;
@@ -290,6 +292,16 @@
 }
 
 .productInfo {
+  select {
+    width: 100%;
+    padding: 0.7rem;
+    outline: none;
+    border: 1px solid rgb(199, 199, 199);
+    border-radius: 10px;
+    &:focus {
+      border: 1px solid #000;
+    }
+  }
 }
 
 .pricing {
@@ -349,6 +361,41 @@
     background-color: rgb(0, 0, 0);
     border-radius: 50%;
     margin-left: 0.1rem;
+  }
+}
+
+.preview {
+  padding: 1rem;
+
+  .previewWrapper {
+    .previewText {
+      font-size: 34px;
+      font-weight: 500;
+    }
+
+    .cover {
+      width: 100%;
+      height: 200px;
+      background-color: rgb(240, 240, 240);
+    }
+
+    .previewInfo {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+
+      div {
+        .tag {
+          font-size: 12px;
+          color: rgb(194, 194, 194);
+        }
+
+        .value {
+          font-size: #000;
+          font-size: 15px;
+        }
+      }
+    }
   }
 }
 

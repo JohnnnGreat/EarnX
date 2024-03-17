@@ -17,7 +17,7 @@ const EditPage = () => {
   const [text, setText] = useState(product?.name);
   const [isPricingChoice, setIsPricingChoice] = useState(false);
   const [value, setValue] = useState("");
-
+  const [price, setPrice] = useState(0);
   const [showImageOption, setShowImageOption] = useState(false);
 
   useEffect(() => {
@@ -43,6 +43,10 @@ const EditPage = () => {
   const handlePricingChoice = () => {
     setIsPricingChoice(true);
   };
+
+  const handlePriceChange = (e) => {
+    setPrice(e.target.value);
+  };
   return (
     <div className={styles.edit}>
       <div className={styles.editWrapper}>
@@ -66,7 +70,7 @@ const EditPage = () => {
             </form>
 
             <div className={styles.richText}>
-              <h1>Description</h1>
+              <h1 className={styles.richTextText}>Description</h1>
               <ReactQuill theme="snow" value={value} onChange={setValue} />
             </div>
 
@@ -75,7 +79,8 @@ const EditPage = () => {
               <label htmlFor="">Custom Domain</label>
               <input type="text" value={text} placeholder="yourdomain.com" />
             </form>
-
+            <br />
+            <br />
             <hr />
 
             <div className={styles.cover}>
@@ -135,7 +140,11 @@ const EditPage = () => {
 
               <div className={styles.pricingInput}>
                 <h1>N</h1>
-                <input type="text" placeholder="Enter Price" />
+                <input
+                  type="text"
+                  onChange={handlePriceChange}
+                  placeholder="Enter Price"
+                />
               </div>
               <div className={styles.checkBoxOption}>
                 <InputPrice
@@ -147,7 +156,18 @@ const EditPage = () => {
               </div>
             </div>
           </div>
-          <div className={styles.preview}></div>
+          <div className={styles.preview}>
+            <div className={styles.previewWrapper}>
+              <h1 className={styles.previewText}>Preview</h1>
+              <div className={styles.cover}></div>
+              <div className={styles.previewInfo}>
+                <div>
+                  <h1 className={styles.tag}>Price</h1>
+                  <h1 className={styles.value}>{price}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
