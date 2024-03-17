@@ -251,6 +251,47 @@
   }
 }
 
+.productInfoText,
+.pricingText .coverText {
+  margin-top: 1rem;
+}
+.coverContainer {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(247, 247, 247);
+  border: 1px solid rgb(214, 214, 214);
+  button,
+  label {
+    background: #000;
+    color: #fff;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+  }
+
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .imageOptions {
+    display: flex !important;
+    align-items: center;
+    gap: 1rem;
+    input {
+      display: none;
+    }
+  }
+}
+
+.productInfo {
+}
+
 .pricing {
   width: 100%;
 

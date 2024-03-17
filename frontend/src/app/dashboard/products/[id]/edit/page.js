@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import styles from "../../../Dashboard.module.scss";
 import Link from "next/link";
 import InputPrice from "@/components/Dashboard/Product/InputPrice";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const EditPage = () => {
   const params = usePathname();
@@ -14,6 +16,9 @@ const EditPage = () => {
 
   const [text, setText] = useState(product?.name);
   const [isPricingChoice, setIsPricingChoice] = useState(false);
+  const [value, setValue] = useState("");
+
+  const [showImageOption, setShowImageOption] = useState(false);
 
   useEffect(() => {
     const getProduct = async (productId) => {
@@ -62,6 +67,7 @@ const EditPage = () => {
 
             <div className={styles.richText}>
               <h1>Description</h1>
+              <ReactQuill theme="snow" value={value} onChange={setValue} />
             </div>
 
             <div className={styles.url}></div>
@@ -73,7 +79,31 @@ const EditPage = () => {
             <hr />
 
             <div className={styles.cover}>
-              <h1>Cover</h1>
+              <h1 className={styles.coverText}>Cover</h1>
+
+              <div className={styles.coverContainer}>
+                {!showImageOption ? (
+                  <div>
+                    <button
+                      onClick={() => {
+                        setShowImageOption(true);
+                      }}
+                    >
+                      Upload a Cover Image
+                    </button>
+                    <p>
+                      Images should be horizontal, at least 1280x720px, and 72
+                      DPI (dots per inch).
+                    </p>
+                  </div>
+                ) : (
+                  <div className={styles.imageOptions}>
+                    <label htmlFor="image">Computer Files</label>
+                    <input type="file" id="image" />
+                    <button>External Link</button>
+                  </div>
+                )}
+              </div>
             </div>
             <br />
             <br />
@@ -88,6 +118,18 @@ const EditPage = () => {
             <br />
             <hr />
 
+            <div className={styles.productInfo}>
+              <h1 className={styles.productInfoText}>Product Info</h1>
+              <select>
+                <option value="I want this">I want this</option>
+                <option value="Buy this">Buy This</option>
+                <option value="Pay">Pay</option>
+              </select>
+            </div>
+
+            <br />
+            <br />
+            <hr />
             <div className={styles.pricing}>
               <h1 className={styles.pricingText}>Pricing</h1>
 
